@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Psychic!</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="jumbotron">
+  				<h1 class="display-3">A Psychic Evaluation</h1>
+  				<p class="lead">So, I'm looking to form an elite crime-fighting/world-saving/general-beat-up-the-bad-guys kinda thing and I already have a hairy dude, a dude that shoots lasers, and some sort of strong man or lizard man or something.  Yeah... it's pretty cool.  However, to qualify for government superhero subsidies, we need to represent all classes of cool super-hero powers and we find ourselves in need of a psychic to join the team!</p>
+  				<hr class="my-4">
+  				<p>Think you have what it takes?  Challenge our synthetic robot brain and prove your psychic ability!  Try to guess which color (ROYGBIV) our brain is thinking of!</p>
+  				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="container">
+					<h3>Take a wild guess...</h3>
+					<div class="input-group">
+      					<span class="input-group-btn">
+        					<button class="btn btn-secondary" type="button" onclick="guessFunction()">Go!</button>
+      					</span>
+      					<input type="text" class="form-control" id="input" placeholder="Guess ROYGBIV" aria-label="Guess ROYGBIV">
+    				</div>
+						<div class="row">
+							<div class="container">
+								<div id="guess">__________</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="container">
+								<div id="answer">__________</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="container">
+								<p>You have guessed <span id="correct">0</span> correctly!</p>
+								<p>You have guessed <span id="wrong">0</span> incorrectly!</p>
+								<p>You are correct <span id="average">0</span>% of the time!</p>
+							</div>
+						</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<img id="image" src="https://cdn.pixabay.com/photo/2014/08/21/19/43/question-423604_1280.png" class="img-fluid" alt="Responsive image" />
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+	
+	
+	//  Define our word bank
+	var words = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+	
+
+	let scoreRight = 0;
+	let scoreWrong = 0;
+
+
+	
+    
+
+	
+	function guessFunction() {
+
+		var word = words[Math.floor(Math.random() * words.length)];
+    
+	document.getElementById("answer").innerHTML = "I was thinking of the color " + word + "!";
+    var x = document.getElementById("input").value;
+    	console.log(x);
+
+    	if (x === word) {
+    		document.getElementById("guess").innerHTML = "You are so right, my man!";
+    		scoreRight++;
+    		document.getElementById("correct").innerHTML = scoreRight;
+    		document.getElementById('image').src='assets/images/celebrate.jpg';
+    	}  else {
+    		document.getElementById("guess").innerHTML = "You are way wrong, dude!";
+    		scoreWrong++;
+    		document.getElementById("wrong").innerHTML = scoreWrong;
+    		document.getElementById('image').src='assets/images/wrong.gif';
+    	}
+    var scoreAverage = Math.round(scoreRight / (scoreRight + scoreWrong) * 100) / 100;
+	console.log(word);
+	document.getElementById("average").innerHTML = scoreAverage;
+	
+	
+	}
+	
+
+	
+	
+	
+
+
+	
+		</script>
+
+</body>
+</html>
